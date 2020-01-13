@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
-import { handleUsers } from './actions/shared'
+import { handleInitialData } from './actions/shared'
+import { setAuthedUser } from './actions/authedUser'
 import { connect } from 'react-redux';
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleUsers())
+    this.props.dispatch(handleInitialData())
+    //this.props.dispatch(setAuthedUser('sarahedo'))
   }
 
   render() {
-    const { userIds, users } = this.props
+    const { userIds, users, questionIds, questions } = this.props
     
     return (
       <div>
-        App
-        <ul>
-          {
-            userIds.map((userId) => <li key={userId}>{users[userId].name}</li>)
-          }
-        </ul>
+        
       </div>
     );
   }
 }
 
-const mapStateToProps = ({users}) => (
+const mapStateToProps = ({users, questions, authedUser}) => (
   {
     userIds: Object.keys(users),
-    users
+    users,
+    questionIds: Object.keys(questions),
+    questions,
+    authedUser
   }
 )
 
