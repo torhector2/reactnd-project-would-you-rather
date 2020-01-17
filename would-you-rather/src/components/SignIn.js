@@ -16,26 +16,29 @@ class SignIn extends Component {
     }
 
     return (
-      <div >
-        <span>
-          Welcome to the Would You Rather App! Please Sign In to continue
-        </span>
+      <div className="max-w-xl mx-auto text-gray-700">
+        <p className="text-center text-3xl">
+          Welcome to the Would You Rather App!
+        </p>
+        <p className="text-center text-2xl">
+          Please Sign In to continue
+        </p>
         <div>
           <img
             alt="logo"
-            style={{ width: "10%" }}
+            className="mt-6 max-w-sm mx-auto h-40 object-center"
             src="https://raw.githubusercontent.com/reduxjs/redux/master/logo/logo.png"
           />
         </div>
-        Sign In
+        <p className="text-center mt-6 text-3xl text-blue-500">Sign In</p>
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <select name="select">
+          <div className="flex mt-6">
+            <select name="select" className="w-2/3 ml-30">
               {
                 userIds.map(userId => (<option key={userId} value={userId}>{users[userId].name}</option>))
               }
             </select>
-            <button>Sign In</button>
+            <button className="w-1/3 ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign In</button>
           </div>
         </form>
       </div>
