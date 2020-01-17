@@ -3,6 +3,9 @@ import { handleInitialData } from './actions/shared'
 import { setAuthedUser } from './actions/authedUser'
 import { connect } from 'react-redux';
 import SignIn from './components/SignIn'
+import Home from './components/Home'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 class App extends Component {
   componentDidMount() {
@@ -15,10 +18,20 @@ class App extends Component {
   }
 
   render() {
-    const { userIds, users } = this.props
-    
+    const { userIds, users, authedUser } = this.props
+    if (!authedUser) {
+      //return <Redirect to='/signin' />
+    }
     return (
-      <SignIn userIds={userIds} users={users} signIn={this.signIn}/>
+      <Router>
+        {authedUser ? (
+          <div>
+            <Route path='/' exact component={Home} />
+            
+          </div>) : (
+            <Route path='/' render={() => <SignIn authedUser={authedUser} userIds={userIds} users={users} signIn={this.signIn}/>}/>
+          )}
+      </Router>
     );
   }
 }

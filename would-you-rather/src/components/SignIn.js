@@ -1,15 +1,20 @@
 import React, { Component } from "react";
 import serializeForm from "form-serialize"
+import { Redirect } from 'react-router-dom'
 
 class SignIn extends Component {
   handleSubmit = e => {
-    e.preventDefault();
-    const values = serializeForm(e.target, { hash: true });
-    this.props.signIn(values.select);
+    e.preventDefault()
+    const values = serializeForm(e.target, { hash: true })
+    this.props.signIn(values.select)
   };
 
   render() {
-    const { userIds, users } = this.props;
+    const { authedUser, userIds, users } = this.props
+    if (authedUser) {
+      return <Redirect to='/' />
+    }
+
     return (
       <div>
         <span>
