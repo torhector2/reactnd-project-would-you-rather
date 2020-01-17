@@ -16,7 +16,7 @@ class SignIn extends Component {
     }
 
     return (
-      <div>
+      <div >
         <span>
           Welcome to the Would You Rather App! Please Sign In to continue
         </span>
