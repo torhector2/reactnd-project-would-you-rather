@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { connect } from 'react-redux'
+import HomeQuestionList from './HomeQuestionList'
 
 class Home extends Component {
     state = {
@@ -19,7 +20,7 @@ class Home extends Component {
         
         return(
             <div>
-                <ul className="flex">
+                <ul id="tabs" className="flex">
                     <li className="flex-1 mr-2">
                         <a className={unansweredStyle} href="#" onClick={() => this.selectTab('unanswered')}>Unaswered Questions</a>
                     </li>
@@ -27,14 +28,11 @@ class Home extends Component {
                         <a className={answeredStyle} href="#" onClick={() => this.selectTab('answered')}>Answered Questions</a>
                     </li>
                 </ul>
+                
                 {(this.state.selected === "unanswered" ? 
-                    <ul id="unanswered" className="bg-red-500">
-                        {this.props.unansweredQuestionsIds.map(id => <li key={id}>{id}</li>)}
-                    </ul>  
+                    <HomeQuestionList id="unanswered" questionsIds={this.props.unansweredQuestionsIds} />
                 : 
-                    <ul id="answered"  className="bg-green-500">
-                        {this.props.answeredQuestionsIds.map(id => <li key={id}>{id}</li>)}
-                    </ul>
+                    <HomeQuestionList id="answered" questionsIds={this.props.answeredQuestionsIds} />
                 )}
             </div>
         )
