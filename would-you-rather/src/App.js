@@ -4,6 +4,7 @@ import { setAuthedUser } from './actions/authedUser'
 import { connect } from 'react-redux';
 import SignIn from './components/SignIn'
 import Home from './components/Home'
+import QuestionPage from './components/QuestionPage'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 
@@ -27,7 +28,7 @@ class App extends Component {
         {authedUser ? (
           <div>
             <Route path='/' exact component={Home} />
-            
+            <Route path='/questions/:id' component={QuestionPage} />
           </div>) : (
             <Route path='/' render={() => <SignIn authedUser={authedUser} userIds={userIds} users={users} signIn={this.signIn}/>}/>
           )}

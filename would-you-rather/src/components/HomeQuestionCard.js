@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class HomeQuestionCard extends Component {
     render() {
@@ -13,7 +14,9 @@ class HomeQuestionCard extends Component {
                     <div className="mb-8 ml-4">
                         <div className="text-gray-900 font-bold text-xl mb-2">{`${user.name} asks "Would you rather"`}</div>
                         <p className="text-gray-700 text-base">{`...${question.optionOne.text}...`}</p>
-                        <button className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">View Poll</button>
+                        <Link to={`/questions/${question.id}`}>
+                            <div className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">View Poll</div>
+                        </Link>
                     </div>
                 </div>
             </li>
