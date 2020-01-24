@@ -23,7 +23,6 @@ export function handleAnswerQuestion(authedUser, qid, answer) {
     return (dispatch, getState) => {
         return _saveQuestionAnswer({authedUser, qid, answer})
             .then(() => {
-                console.log('aquí deberíamos dispatch answerQuestion')
                 dispatch(answerQuestion(authedUser, qid, answer))
             })
     }
