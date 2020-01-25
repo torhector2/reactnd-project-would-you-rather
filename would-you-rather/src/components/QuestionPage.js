@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import { handleAnswerQuestion } from '../actions/questions'
 import { addAnswerToUser } from '../actions/users'
 import UnansweredQuestionPage from './UnansweredQuestionPage'

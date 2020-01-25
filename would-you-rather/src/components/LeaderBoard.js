@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import LeaderCard from './LeaderCard'
 
 class LeaderBoard extends Component {
     render() {
-        console.log(this.props.leaders)
-        return <div>Leader Board</div>
+        const { leaders } = this.props || []
+        return (
+            <div>
+                <ul>
+                    { leaders.map(user => <LeaderCard key={user.id} user={user} />) }
+                </ul>
+            </div>
+        )
     }
 }
 
