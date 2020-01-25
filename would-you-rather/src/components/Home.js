@@ -39,11 +39,11 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = ({questions}) => {
+const mapStateToProps = ({questions, authedUser}) => {
     const questionIds = Object.keys(questions)
     const answeredQuestionsIds = questionIds.filter((id) => {
         const question = questions[id]
-        return question.optionOne.votes.length > 0 || question.optionTwo.votes.length > 0
+        return question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)
     })
     const unansweredQuestionsIds = questionIds.filter((id) => !answeredQuestionsIds.includes(id))
     return {

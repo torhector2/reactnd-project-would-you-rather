@@ -35,6 +35,19 @@ let users = {
 }
 
 let questions = {
+  "8xf0y6ziyjabvozdd253nd_DELETE": {
+    id: '8xf0y6ziyjabvozdd253nd_DELETE',
+    author: 'sarahedo',
+    timestamp: 1467166872634,
+    optionOne: {
+      votes: [],
+      text: 'have horrible short term memory',
+    },
+    optionTwo: {
+      votes: [],
+      text: 'have horrible long term memory'
+    }
+  },
   "8xf0y6ziyjabvozdd253nd": {
     id: '8xf0y6ziyjabvozdd253nd',
     author: 'sarahedo',
