@@ -7,7 +7,7 @@ class ResultCard extends Component {
         return (
             <div className={`mt-4 ml-4 mr-4 w-11/12 border border-gray-600 p-4 rounded ${voted ? 'bg-teal-100' : ''}`}>
                 { voted && 
-                    (<div class="flex">
+                    (<div className="flex">
                         <div className="mr-2 bg-teal-600 text-white p-2 rounded leading-none flex items-center">
                             Your Vote
                         </div>
