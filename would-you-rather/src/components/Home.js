@@ -13,7 +13,7 @@ class Home extends Component {
 
     render() {
         const selectedStyle = "text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white"
-        const unselectedStyle = "text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
+        const unselectedStyle = "text-center block border border-blue rounded hover:border-gray-200 text-blue-500 bg-gray-100 hover:bg-gray-200 py-2 px-4"
         
         const unansweredStyle = this.state.selected === 'unanswered' ? selectedStyle : unselectedStyle
         const answeredStyle = this.state.selected === 'answered' ? selectedStyle : unselectedStyle
@@ -22,10 +22,10 @@ class Home extends Component {
             <div>
                 <ul id="tabs" className="flex">
                     <li className="flex-1 mr-2">
-                        <a className={unansweredStyle} href="#" onClick={() => this.selectTab('unanswered')}>Unaswered Questions</a>
+                        <a className={unansweredStyle} onClick={() => this.selectTab('unanswered')}>Unaswered Questions</a>
                     </li>
                     <li className="flex-1 mr-2">
-                        <a className={answeredStyle} href="#" onClick={() => this.selectTab('answered')}>Answered Questions</a>
+                        <a className={answeredStyle} onClick={() => this.selectTab('answered')}>Answered Questions</a>
                     </li>
                 </ul>
                 
