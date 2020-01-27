@@ -20,7 +20,8 @@ class App extends Component {
     this.props.dispatch(setAuthedUser(user))
   }
 
-  logOut = () => {
+  logOut = (history) => {
+    history.push('/')
     this.props.dispatch(setAuthedUser(null))
   }
 
