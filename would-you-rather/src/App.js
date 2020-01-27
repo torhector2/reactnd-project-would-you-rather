@@ -31,7 +31,7 @@ class App extends Component {
         <Fragment>
           {authedUser ? (
             <div>
-              <Nav authedUser={authedUser} name={users[authedUser].name} logout={this.logOut} />
+              <Nav user={users[authedUser]} logout={this.logOut} />
               <Route path='/' exact component={Home} />
               <Route path='/questions/:id' component={QuestionPage} />
               <Route path='/leaderboard' exact component={LeaderBoard} />

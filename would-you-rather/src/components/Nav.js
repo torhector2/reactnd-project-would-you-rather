@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 export default function Nav (props) {
-    const { authedUser, name, logout } = props
+    const { user, logout } = props
 
     return (
         <nav className="my-4 mx-4 border-b">
@@ -23,10 +23,13 @@ export default function Nav (props) {
                     </NavLink>
                 </li>
                 <li className='ml-64 mr-4 text-gray-800'>
-                    {name}
+                    Hello, <span className='font-bold'>{user.name}</span>
+                </li>
+                <li className='ml-4 -mt-2'>
+                    <img className='h-10 w-10' src={user.avatarURL}/>
                 </li>
                 <li>
-                    <button className='mx-4 mb-4 border px-4 rounded bg-blue-700 text-white' onClick={() => props.logout()}>Logout</button>
+                    <button className='mx-4 mb-4 border px-4 rounded bg-blue-700 text-white' onClick={() => logout()}>Logout</button>
                 </li>
             </ul>
         </nav>
