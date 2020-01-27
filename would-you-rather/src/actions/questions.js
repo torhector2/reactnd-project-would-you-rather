@@ -1,4 +1,5 @@
-import { _saveQuestionAnswer } from '../utils/_DATA'
+import { _saveQuestionAnswer, _saveQuestion } from '../utils/_DATA'
+import { handleInitialData } from './shared'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ANSWER_QUESTION = 'ANSWER_QUESTION'
@@ -25,5 +26,12 @@ export function handleAnswerQuestion(authedUser, qid, answer) {
             .then(() => {
                 dispatch(answerQuestion(authedUser, qid, answer))
             })
+    }
+}
+
+export function handleNewQuestion(optionOneText, optionTwoText, author) {
+    return (dispatch, getState) => {
+        return _saveQuestion({optionOneText, optionTwoText, author})
+            .then(() => dispatch(handleInitialData()))
     }
 }
