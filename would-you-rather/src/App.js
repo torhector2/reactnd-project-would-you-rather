@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { handleInitialData } from './actions/shared'
 import { setAuthedUser } from './actions/authedUser'
 import { connect } from 'react-redux';
@@ -8,6 +8,7 @@ import NewQuestion from './components/NewQuestion'
 import LeaderBoard from './components/LeaderBoard'
 import QuestionPage from './components/QuestionPage'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Nav from './components/Nav'
 
 class App extends Component {
   componentDidMount() {
@@ -19,19 +20,26 @@ class App extends Component {
     this.props.dispatch(setAuthedUser(user))
   }
 
+  logOut = () => {
+    this.props.dispatch(setAuthedUser(null))
+  }
+
   render() {
     const { userIds, users, authedUser } = this.props
     return (      
       <Router>
-        {authedUser ? (
-          <div>
-            <Route path='/' exact component={Home} />
-            <Route path='/questions/:id' component={QuestionPage} />
-            <Route path='/leaderboard' exact component={LeaderBoard} />
-            <Route path='/add' exact component={NewQuestion} />
-          </div>) : (
-            <Route path='/' render={() => <SignIn authedUser={authedUser} userIds={userIds} users={users} signIn={this.signIn}/>}/>
-          )}
+        <Fragment>
+          {authedUser ? (
+            <div>
+              <Nav authedUser={authedUser} name={users[authedUser].name} logout={this.logOut} />
+              <Route path='/' exact component={Home} />
+              <Route path='/questions/:id' component={QuestionPage} />
+              <Route path='/leaderboard' exact component={LeaderBoard} />
+              <Route path='/add' exact component={NewQuestion} />
+            </div>) : (
+              <Route path='/' render={() => <SignIn authedUser={authedUser} userIds={userIds} users={users} signIn={this.signIn}/>}/>
+            )}
+        </Fragment>
       </Router>
     );
   }
