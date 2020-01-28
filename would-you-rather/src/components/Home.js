@@ -44,8 +44,11 @@ const mapStateToProps = ({questions, authedUser}) => {
     const answeredQuestionsIds = questionIds.filter((id) => {
         const question = questions[id]
         return question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)
-    })
+    }).sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+
     const unansweredQuestionsIds = questionIds.filter((id) => !answeredQuestionsIds.includes(id))
+        .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+        
     return {
         questionIds,
         answeredQuestionsIds,
