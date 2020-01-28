@@ -26,7 +26,7 @@ class Nav extends Component {
                         Hello, <span className='font-bold'>{user.name}</span>
                     </li>
                     <li className='ml-4 -mt-2'>
-                        <img className='h-10 w-10' src={user.avatarURL}/>
+                        <img alt='avatar' className='h-10 w-10' src={user.avatarURL}/>
                     </li>
                     <li>
                         <button className='mx-4 mb-4 border px-4 rounded bg-blue-700 text-white' onClick={() => logout(this.props.history)}>Logout</button>
