@@ -4,6 +4,7 @@ import { handleAnswerQuestion } from '../actions/questions'
 import { addAnswerToUser } from '../actions/users'
 import UnansweredQuestionPage from './UnansweredQuestionPage'
 import AnsweredQuestionPage from './AnsweredQuestionPage'
+import NotFoundPage from './NotFoundPage'
 
 class QuestionPage extends Component {
     handleSubmit = (e) => {
@@ -14,7 +15,12 @@ class QuestionPage extends Component {
     }
 
     render() {
-        const { question, author, answered, optionVoted } = this.props
+        const { question, author, answered, optionVoted, pageExists } = this.props
+
+        if (!pageExists) {
+            return <NotFoundPage />
+        }
+
         if (answered) {
             return <AnsweredQuestionPage question={question} author={author} optionVoted={optionVoted} />
         }
@@ -24,6 +30,7 @@ class QuestionPage extends Component {
 
 const mapStateToProps = ({questions, users, authedUser}, props) => {
     const { id } = props.match.params
+    if (!Object.keys(questions).includes(id)) return {id, pageExists: false}
     const optionVoted = questions[id].optionOne.votes.includes(authedUser) ? 'optionOne' : 'optionTwo'
 
     return {
@@ -33,7 +40,8 @@ const mapStateToProps = ({questions, users, authedUser}, props) => {
         authedUser,
         users,
         answered: users[authedUser].answers[id],
-        optionVoted
+        optionVoted,
+        pageExists: true
     }
 }
 
