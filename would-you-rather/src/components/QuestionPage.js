@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from '../actions/questions'
-import { addAnswerToUser } from '../actions/users'
 import UnansweredQuestionPage from './UnansweredQuestionPage'
 import AnsweredQuestionPage from './AnsweredQuestionPage'
 import NotFoundPage from './NotFoundPage'
@@ -11,7 +10,6 @@ class QuestionPage extends Component {
         e.preventDefault()
         const { dispatch, authedUser, id } = this.props
         dispatch(handleAnswerQuestion(authedUser, id, e.target.answer.value))
-        dispatch(addAnswerToUser(authedUser, id, e.target.answer.value))
     }
 
     render() {
